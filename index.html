@@ -8,15 +8,46 @@
   </head>
   <body>
     <div class="container">
-      <div class="flex column justify-center">
+      <div class="left-section">
         <h2 id="clock">00:00:00</h2>
         <div id="weather">
           <p></p>
           <p></p>
         </div>
         <div id="map"></div>
+        <div class="calendar">
+          <div class="container-calendar">
+            <h3 id="monthAndYear"></h3>
+            <div class="button-container-calendar">
+              <button id="previous" onclick="previous()">&#8249;</button>
+              <button id="next" onclick="next()">&#8250;</button>
+            </div>
+            <table class="table-calendar" id="calendar">
+              <thead id="thead-month"></thead>
+              <tbody id="calendar-body"></tbody>
+            </table>
+            <div class="footer-container-calendar">
+              <select id="month" onchange="jump()">
+                <option value="0">Jan</option>
+                <option value="1">Feb</option>
+                <option value="2">Mar</option>
+                <option value="3">Apr</option>
+                <option value="4">May</option>
+                <option value="5">Jun</option>
+                <option value="6">Jul</option>
+                <option value="7">Aug</option>
+                <option value="8">Sep</option>
+                <option value="9">Oct</option>
+                <option value="10">Nov</option>
+                <option value="11">Dec</option>
+              </select>
+              <select id="year" onchange="jump()"></select>
+              <button onClick="jump('today')">today</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="flex column justify-center">
+      <div class="right-section">
         <form class="hidden" id="login-form">
           <input
             required
@@ -24,23 +55,78 @@
             type="text"
             placeholder="What is your name?"
           />
-          <input type="submit" value="Log In" />
+          <button type="submit">Log in</button>
         </form>
         <h1 class="hidden" id="greeting"></h1>
         <div id="quote">
+          <h2>Today's quote 👇</h2>
           <span></span>
           <span></span>
         </div>
-        <form id="todo-form">
-          <input
-            type="text"
-            placeholder="Write a To Do and Press Enter"
-            required
-          />
-        </form>
-        <ul id="todo-list"></ul>
+        <div id="todo">
+          <h2>Todo List 📕</h2>
+          <form id="todo-form">
+            <input
+              type="text"
+              placeholder="Write a To Do and Press Enter"
+              required
+            />
+          </form>
+          <ul id="todo-list"></ul>
+        </div>
+        <div id="paint">
+          <div class="left-block">
+            <div class="colors">
+              <button type="button" value="#0000ff"></button>
+              <button type="button" value="#009fff"></button>
+              <button type="button" value="#0fffff"></button>
+              <button type="button" value="#bfffff"></button>
+              <button type="button" value="#000000"></button>
+              <button type="button" value="#333333"></button>
+              <button type="button" value="#666666"></button>
+              <button type="button" value="#999999"></button>
+              <button type="button" value="#ffcc66"></button>
+              <button type="button" value="#ffcc00"></button>
+              <button type="button" value="#ffff00"></button>
+              <button type="button" value="#ffff99"></button>
+              <button type="button" value="#003300"></button>
+              <button type="button" value="#555000"></button>
+              <button type="button" value="#00ff00"></button>
+              <button type="button" value="#99ff99"></button>
+              <button type="button" value="#f00000"></button>
+              <button type="button" value="#ff6600"></button>
+              <button type="button" value="#ff9933"></button>
+              <button type="button" value="#f5deb3"></button>
+              <button type="button" value="#330000"></button>
+              <button type="button" value="#663300"></button>
+              <button type="button" value="#cc6600"></button>
+              <button type="button" value="#deb887"></button>
+              <button type="button" value="#aa0fff"></button>
+              <button type="button" value="#cc66cc"></button>
+              <button type="button" value="#ff66ff"></button>
+              <button type="button" value="#ff99ff"></button>
+              <button type="button" value="#e8c4e8"></button>
+              <button type="button" value="#ffffff"></button>
+            </div>
+            <div class="brushes">
+              <button type="button" value="1"></button>
+              <button type="button" value="2"></button>
+              <button type="button" value="3"></button>
+              <button type="button" value="4"></button>
+              <button type="button" value="5"></button>
+            </div>
+            <div class="buttons">
+              <button id="clear" type="button">Clear</button>
+              <button id="save" type="button">Save</button>
+            </div>
+          </div>
+          <div class="right-block">
+            <canvas id="paint-canvas" width="640" height="400"></canvas>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="cursor"></div>
     <script src="js/greetings.js"></script>
     <script src="js/clock.js"></script>
     <script src="js/quotes.js"></script>
@@ -48,9 +134,8 @@
     <script src="js/todo.js"></script>
     <script src="js/weather.js"></script>
     <script src="js/map.js"></script>
-    <script
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyhQmfek_w5ZhSqbX4pTfRKGxPOtMPkS4&callback=initMap"
-    ></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/painting.js"></script>
   </body>
 </html>
